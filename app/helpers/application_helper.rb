@@ -64,7 +64,7 @@ module ApplicationHelper
           latitude: earthquake["lat"], 
           date: earthquake["datetime"],
           location: locate_name(earthquake["lat"], earthquake["lng"]),
-          top: false)
+          top: top_ten)
       end
     end
     return quakes
