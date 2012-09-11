@@ -30,7 +30,7 @@
 				<% if quake.location == "ZERO_RESULTS" %>
 					<%= quake.date.strftime("%e %b %Y") %> | <strong>Magnitude</strong>: <%= quake.magnitude %>
 				<% else %>
-					<%= quake.location %> | <%= quake.date.strftime("%e %b %Y") %> | <strong>Magnitude</strong>: <%= quake.magnitude %>
+					<strong><%= quake.location %></strong> | <%= quake.date.strftime("%e %b %Y") %> | <strong>Magnitude</strong>: <%= quake.magnitude %>
 				<% end %>
 				</li>
 			<% end %>
