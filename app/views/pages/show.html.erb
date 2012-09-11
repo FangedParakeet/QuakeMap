@@ -1,0 +1,50 @@
+<div class="map"> <!-- This is the Google Map -->
+	<%= gmaps4rails(@markers) %>
+</div>
+
+<div class="near">
+	<h2>Earthquakes near <%= @location %></h2>
+	<% if @quakes.empty? %>
+		No earthquakes near here!
+	<% else %>
+		<ol>
+			<% @quakes.each do |quake| %>
+				<li>
+				<% if quake.location == "ZERO_RESULTS" %>
+					<%= quake.date.strftime("%e %b %Y") %> | <strong>Magnitude</strong>: <%= quake.magnitude %>
+				<% else %>
+					<%= quake.location %> | <%= quake.date.strftime("%e %b %Y") %> | <strong>Magnitude</strong>: <%= quake.magnitude %>
+				<% end %>
+				</li>
+			<% end %>
+		</ol>
+	<% end %>
+</div>
+
+<div class="ten">
+	<% if @top_ten %>
+		<h2>Top Ten Earthquakes of the Past Twelve Months!</h2>
+		<ol>
+			<% @top_ten.each do |quake| %>
+				<li>
+				<% if quake.location == "ZERO_RESULTS" %>
+					<%= quake.date.strftime("%e %b %Y") %> | <strong>Magnitude</strong>: <%= quake.magnitude %>
+				<% else %>
+					<%= quake.location %> | <%= quake.date.strftime("%e %b %Y") %> | <strong>Magnitude</strong>: <%= quake.magnitude %>
+				<% end %>
+				</li>
+			<% end %>
+		</ol>
+	<% end %>
+</div>
+
+<div class="clear"></div>
+
+<div class="form">
+	<%= form_tag quake_url do %>
+		<%= label_tag :location, "Enter a locality here to find nearby earthquakes:" %>
+		<%= text_field_tag :location %><br />
+		<%= submit_tag "Enter" %>
+	<% end %>
+</div>
+<%= link_to "Back", root_url %>

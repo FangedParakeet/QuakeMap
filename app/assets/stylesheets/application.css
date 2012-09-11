@@ -1,0 +1,122 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+/*** RESET ***/
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, a, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, hr, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+  background: transparent;
+  border: 0;
+  font-size: 100%;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+body {
+  line-height: 1;
+}
+a {
+  text-decoration: none;
+}
+*:focus {
+  outline: 1;
+}
+article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+nav ul {
+  list-style: none;
+}
+ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+input, select {
+  vertical-align: middle;
+}
+
+
+/*** GLOBAL ***/
+
+.header h1 {
+	margin: 0 auto;
+	padding: 10px;
+	text-align: center;
+	font-family: Helvetica;
+}
+
+.map {
+	padding: 10px;
+	margin: 10px;
+	float: left;
+	font-family: Helvetica;
+}
+
+.ten {
+	padding: 10px;
+	margin: 10px;
+	font-family: Helvetica;
+	float: left;
+	
+}
+
+	.ten ol {
+		padding: 10px;
+		margin: 10px;
+	}
+
+	.ten ol li {
+		margin: 5px;
+		font-size: 12px;
+	}
+	
+.near {
+	padding: 10px;
+	margin: 10px;
+	font-family: Helvetica;
+	float: left;
+}
+
+	.near ol {
+		padding: 10px;
+		margin: 10px;
+	}
+
+	.near ol li {
+		margin: 5px;
+		font-size: 12px;
+	}
+
+.form {
+	padding: 10px;
+	margin: 10px;
+	float: left;
+	width: 25%;
+	font-family: Helvetica;
+}
+
+.clear {
+	clear: both;
+}
