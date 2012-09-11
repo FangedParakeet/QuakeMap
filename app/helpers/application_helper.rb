@@ -35,7 +35,7 @@ module ApplicationHelper
         end
       end
     else
-      return location["status"]
+      return nil
     end
   end
   
