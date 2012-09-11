@@ -9,7 +9,7 @@ class Quake < ActiveRecord::Base
   
   def gmaps4rails_infowindow
     if self.location == "ZERO_RESULTS"
-      "Date: #{self.date}, Magnitude: #{self.magnitude}"
+      "Date: #{self.date.strftime("%e %b %Y")}, Magnitude: #{self.magnitude}"
     else
       "#{self.location}, Date: #{self.date.strftime("%e %b %Y")}, Magnitude: #{self.magnitude}"
     end
