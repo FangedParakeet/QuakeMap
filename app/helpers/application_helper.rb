@@ -16,7 +16,11 @@ module ApplicationHelper
     locality.sub!(" ", "%20")
     location = JSON.parse(open("http://maps.googleapis.com/maps/api/geocode/json?address=#{locality}&sensor=false").read)
     if location["status"] == "OK"
-      return location["results"].first["geometry"]["bounds"]
+      if location["results"].first["geometry"]["bounds"]
+        return location["results"].first["geometry"]["bounds"]
+      else
+        return location["results"].first["geometry"]["viewport"]
+      end
     else
       return location["status"]
     end
@@ -47,6 +51,9 @@ module ApplicationHelper
   
   def store_quakes earthquakes # Receives information from earthquake api and stores it to database, so that gmaps4rails gem can create map in view
     quakes = []
+    if earthquakes.nil?
+      return nil
+    end
     earthquakes.each do |earthquake|
       if Quake.find_by_eqid(earthquake["eqid"])
         quakes << Quake.find_by_eqid(earthquake["eqid"])
