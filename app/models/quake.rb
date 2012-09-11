@@ -1,5 +1,5 @@
 class Quake < ActiveRecord::Base
-  attr_accessible :date, :eqid, :gmaps, :latitude, :longitude, :magnitude, :location
+  attr_accessible :date, :eqid, :gmaps, :latitude, :longitude, :magnitude, :location, :top
   
   acts_as_gmappable
   

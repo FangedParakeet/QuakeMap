@@ -11,18 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120909200128) do
+ActiveRecord::Schema.define(:version => 20120911193852) do
 
-  create_table "quakes", :force => true do |t|
-    t.string   "eqid"
-    t.float    "magnitude"
-    t.float    "longitude"
-    t.float    "latitude"
-    t.boolean  "gmaps"
-    t.datetime "date"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "location"
-  end
+# Could not dump table "quakes" because of following StandardError
+#   Unknown type 'bool' for column 'top'
 
 end

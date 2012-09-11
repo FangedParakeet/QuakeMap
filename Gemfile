@@ -26,6 +26,7 @@ group :production do
   gem 'pg'
 end
 
+gem 'rufus-scheduler'
 
 gem 'jquery-rails'
 

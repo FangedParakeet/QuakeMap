@@ -49,7 +49,7 @@ module ApplicationHelper
     end
   end
   
-  def store_quakes earthquakes # Receives information from earthquake api and stores it to database, so that gmaps4rails gem can create map in view
+  def store_quakes earthquakes, top_ten # Receives information from earthquake api and stores it to database, so that gmaps4rails gem can create map in view
     quakes = []
     if earthquakes.nil?
       return nil
@@ -63,7 +63,8 @@ module ApplicationHelper
           longitude: earthquake["lng"], 
           latitude: earthquake["lat"], 
           date: earthquake["datetime"],
-          location: locate_name(earthquake["lat"], earthquake["lng"]))
+          location: locate_name(earthquake["lat"], earthquake["lng"]),
+          top: false)
       end
     end
     return quakes
