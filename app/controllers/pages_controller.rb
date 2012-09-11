@@ -13,7 +13,7 @@ class PagesController < ApplicationController
     bounds = locate_bounds(params[:location]) # Creates boundaries for earthquake search
     search = find_quakes(bounds["northeast"]["lat"], bounds["southwest"]["lat"], bounds["northeast"]["lng"], bounds["southwest"]["lng"], nil) # Finds earthquakes within bounds
     @quakes = store_quakes(search)
-    if @quakes.empty?
+    if @quakes.nil?
       if @top_ten
         @markers = @top_ten.to_gmaps4rails
       else

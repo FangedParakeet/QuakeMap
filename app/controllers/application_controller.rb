@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
     top = find_quakes(90, -90, 180, -180, 1.year.ago.strftime("%Y-%m-%d"))
     if !top.nil?
       @top_ten = store_quakes(top)
+    else
+      @top_ten = nil
     end
     return @top_ten
   end

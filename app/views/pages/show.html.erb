@@ -4,7 +4,7 @@
 
 <div class="near">
 	<h2>Earthquakes near <%= @location %></h2>
-	<% if @quakes.empty? %>
+	<% if @quakes.nil? %>
 		No earthquakes near here!
 	<% else %>
 		<ol>
