@@ -10,7 +10,7 @@
 		<ol>
 			<% @quakes.each do |quake| %>
 				<li>
-				<% if quake.location == "ZERO_RESULTS" %>
+				<% if quake.location.nil? %>
 					<%= quake.date.strftime("%e %b %Y") %> | <strong>Magnitude</strong>: <%= quake.magnitude %>
 				<% else %>
 					<%= quake.location %> | <%= quake.date.strftime("%e %b %Y") %> | <strong>Magnitude</strong>: <%= quake.magnitude %>
@@ -27,7 +27,7 @@
 		<ol>
 			<% @top_ten.each do |quake| %>
 				<li>
-				<% if quake.location == "ZERO_RESULTS" %>
+				<% if quake.location.nil? %>
 					<%= quake.date.strftime("%e %b %Y") %> | <strong>Magnitude</strong>: <%= quake.magnitude %>
 				<% else %>
 					<strong><%= quake.location %></strong> | <%= quake.date.strftime("%e %b %Y") %> | <strong>Magnitude</strong>: <%= quake.magnitude %>
