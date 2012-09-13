@@ -18,7 +18,7 @@ module ApplicationHelper
     end
     location = JSON.parse(open("http://maps.googleapis.com/maps/api/geocode/json?address=#{locality}&sensor=false").read)
     if location["status"] == "OK"
-      if location["results"].first["types"].include?("street_address") # Expand bounds if street address given
+      if location["results"].first["types"].include?("street_address") || location["results"].first["types"].include?("point_of_interest") # Expand bounds if street address given
         place = String.new
         location["results"].first["address_components"].each do |component|
           if component["types"].include?("locality")
