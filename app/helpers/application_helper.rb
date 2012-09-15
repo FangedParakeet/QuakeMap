@@ -3,12 +3,8 @@ require 'json'
 
 module ApplicationHelper
   
-  def find_quakes north, south, east, west, date # Returns earthquakes from api given boundaries and optional date
-    if date.nil?
-      quakes = JSON.parse(open("http://api.geonames.org/earthquakesJSON?north=#{north.to_s}&south=#{south.to_s}&east=#{east.to_s}&west=#{west.to_s}&username=FangedParakeet").read)
-    else
-      quakes = JSON.parse(open("http://api.geonames.org/earthquakesJSON?north=#{north.to_s}&south=#{south.to_s}&east=#{east.to_s}&west=#{west.to_s}&date=#{date}&username=FangedParakeet").read)
-    end
+  def find_quakes north, south, east, west, maxRows # Returns earthquakes from api given boundaries and optional date
+      quakes = JSON.parse(open("http://api.geonames.org/earthquakesJSON?north=#{north.to_s}&south=#{south.to_s}&east=#{east.to_s}&west=#{west.to_s}&maxRows=#{maxRows}&username=FangedParakeet").read)
     return quakes["earthquakes"]
   end
   
@@ -98,6 +94,36 @@ module ApplicationHelper
       end
     end
     return quakes
+  end
+  
+  def store_top_ten date, range
+    quakes = []
+    earthquakes = find_quakes 90, -90, 180, -180, range
+    earthquakes.each do |earthquake|
+      if quakes.length < 10
+        if DateTime.strptime(earthquake["datetime"], '%Y-%m-%d %H:%M:%S') > date
+          this_quake = Quake.find_by_eqid(earthquake["eqid"])
+          if this_quake
+            this_quake.top = true
+            this_quake.save
+            quakes << this_quake
+          else
+            quakes << Quake.create(eqid: earthquake["eqid"], 
+              magnitude: earthquake["magnitude"], 
+              longitude: earthquake["lng"], 
+              latitude: earthquake["lat"], 
+              date: earthquake["datetime"],
+              location: locate_name(earthquake["lat"], earthquake["lng"]),
+              top: true)
+          end
+        end
+      end
+    end
+    if quakes.length < 10
+      return store_top_ten date, (range+20)
+    else
+      return quakes        
+    end
   end
       
 end

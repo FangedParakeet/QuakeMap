@@ -11,7 +11,7 @@ class PagesController < ApplicationController
   def show
     @location = real_name(params[:location]) # Translates user entry to more legible place name
     bounds = locate_bounds(params[:location]) # Creates boundaries for earthquake search
-    search = find_quakes(bounds["northeast"]["lat"], bounds["southwest"]["lat"], bounds["northeast"]["lng"], bounds["southwest"]["lng"], nil) # Finds earthquakes within bounds
+    search = find_quakes(bounds["northeast"]["lat"], bounds["southwest"]["lat"], bounds["northeast"]["lng"], bounds["southwest"]["lng"], 10) # Finds earthquakes within bounds
     @quakes = store_quakes(search, nil)
     if @quakes.nil? || @quakes.empty?
       if @top_ten
